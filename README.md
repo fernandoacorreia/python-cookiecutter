@@ -24,6 +24,15 @@ uv sync --dev
 uv run python -m python_scaffolding.main
 ```
 
+### Code Formatting and Linting
+```bash
+# Format code with black
+uv run --dev -m black .
+
+# Lint code with ruff
+uv run --dev -m ruff check --fix .
+```
+
 ### Testing
 ```bash
 # Run unit tests
