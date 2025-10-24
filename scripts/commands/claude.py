@@ -1,5 +1,4 @@
 import argparse
-import sys
 
 from .utils import run_command
 
@@ -22,14 +21,14 @@ Any additional arguments passed to this command will be forwarded to the Claude 
     claude_parser.set_defaults(func=execute)
 
 
-def execute(args) -> bool:
+def execute(args: argparse.Namespace) -> bool:
     """Run Claude CLI with additional arguments."""
     # Build the command with additional arguments
     cmd_parts = ["uv run claude"]
-    
+
     # Use unknown_args if available (passed from main dev script)
-    if hasattr(args, 'unknown_args') and args.unknown_args:
+    if hasattr(args, "unknown_args") and args.unknown_args:
         cmd_parts.extend(args.unknown_args)
-    
+
     cmd = " ".join(cmd_parts)
     return run_command(cmd, "Claude CLI")

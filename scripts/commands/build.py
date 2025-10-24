@@ -21,6 +21,6 @@ The wheel file will be created in the 'dist/' directory.
     build_parser.set_defaults(func=execute)
 
 
-def execute(args) -> bool:
+def execute(args: argparse.Namespace) -> bool:
     """Build the wheel file."""
     return run_command("uv build", "Building wheel file")

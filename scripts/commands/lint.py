@@ -21,7 +21,7 @@ This command runs code formatting and linting tools in sequence:
     lint_parser.set_defaults(func=execute)
 
 
-def execute(args) -> bool:
+def execute(args: argparse.Namespace) -> bool:
     """Run linting tools (black, ruff, mypy)."""
     print("Running linting tools...")
 

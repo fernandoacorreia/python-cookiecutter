@@ -19,7 +19,7 @@ This command executes the main application using:
     run_parser.set_defaults(func=execute)
 
 
-def execute(args) -> bool:
+def execute(args: argparse.Namespace) -> bool:
     """Run the main application."""
     return run_command(
         "uv run --dev python -m python_scaffolding.main", "Main application"
