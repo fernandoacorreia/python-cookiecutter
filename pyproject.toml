@@ -16,6 +16,7 @@ dev = [
     "black",
     "mypy",
     "pytest",
+    "pytest-cov",
     "ruff",
 ]
 

@@ -1,3 +1,6 @@
 *.pyc
 .pytest_cache
 __pycache__/
+.coverage
+htmlcov/
+.DS_Store

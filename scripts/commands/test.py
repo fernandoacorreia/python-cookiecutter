@@ -12,7 +12,9 @@ Examples:
     dev test                    # Run all tests
     dev test tests/test_main.py # Run specific test file
     dev test -v                 # Run with verbose output
-    dev test --cov              # Run with coverage
+    dev test --cov              # Run with coverage report
+    dev test --cov=src          # Run with coverage for specific path
+    dev test --cov --cov-report=html  # Generate HTML coverage report
     dev test -k test_function   # Run tests matching pattern
 """
     test_parser = subparsers.add_parser(
