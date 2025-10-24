@@ -41,7 +41,7 @@ def configure_logging() -> None:
     # Configure logging format based on log_format
     if log_format == "json":
         formatter = JSONFormatter(datefmt="%Y-%m-%d %H:%M:%S")
-        format_string = None
+        format_string = ""  # Will be overridden by JSONFormatter
     elif log_format == "pretty":
         formatter = None
         format_string = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
