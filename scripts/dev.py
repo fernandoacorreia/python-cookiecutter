@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from commands import build, lint, run
+from commands import build, claude, lint, run
 
 
 def _prepare_parser() -> argparse.ArgumentParser:
@@ -15,26 +15,31 @@ def _prepare_parser() -> argparse.ArgumentParser:
     run.add_parser(subparsers)
     lint.add_parser(subparsers)
     build.add_parser(subparsers)
+    claude.add_parser(subparsers)
 
     return parser
 
 
-def _execute_command(args: argparse.Namespace) -> None:
+def _execute_command(parser: argparse.ArgumentParser, args: argparse.Namespace) -> None:
     """Execute the command based on parsed arguments."""
     if not args.command:
-        parser = _prepare_parser()
         parser.print_help()
         sys.exit(0)
-
-    success = args.func()
+    
+    success = args.func(args)
     sys.exit(0 if success else 1)
 
 
 def main() -> None:
     """Main entry point for dev script."""
     parser = _prepare_parser()
-    args = parser.parse_args()
-    _execute_command(args)
+    args, unknown = parser.parse_known_args()
+    
+    # Pass unknown args to any command that needs them
+    if unknown:
+        args.unknown_args = unknown
+    
+    _execute_command(parser, args)
 
 
 if __name__ == "__main__":
