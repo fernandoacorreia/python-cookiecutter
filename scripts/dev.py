@@ -21,7 +21,6 @@ def run_command(cmd: str, description: str = "") -> bool:
 
 def cmd_run() -> bool:
     """Run the main application."""
-    print("Running the application...")
     return run_command(
         "uv run --dev python -m python_scaffolding.main", "Main application"
     )
@@ -41,7 +40,6 @@ def cmd_lint() -> bool:
 
 def cmd_build() -> bool:
     """Build the wheel file."""
-    print("Building wheel file...")
     return run_command("uv build", "Building wheel file")
 
 
