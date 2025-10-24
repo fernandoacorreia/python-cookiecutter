@@ -1,4 +1,4 @@
-from python_scaffolding.main import (
+from {{ cookiecutter.package_name }}.main import (
     greetings,
     read_file_content,
     write_file_content,

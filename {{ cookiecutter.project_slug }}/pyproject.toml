@@ -3,10 +3,13 @@ requires = ["uv-build"]
 build-backend = "uv_build"
 
 [project]
-name = "python-scaffolding"
+name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
-description = "Python Scaffolding"
-requires-python = ">=3.13,<3.14"
+description = "{{ cookiecutter.project_description }}"
+authors = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" }
+]
+requires-python = "{{ cookiecutter.python_version }}"
 dependencies = [
     "pydantic",
     "python-dotenv",
@@ -22,10 +25,10 @@ dev = [
 ]
 
 [tool.ruff]
-target-version = "py313"
+target-version = "py{{ cookiecutter.python_version.split(',')[0].replace('>=', '').replace('.', '') }}"
 
 [tool.mypy]
-python_version = "3.13"
+python_version = "{{ cookiecutter.python_version.split(',')[0].replace('>=', '') }}"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

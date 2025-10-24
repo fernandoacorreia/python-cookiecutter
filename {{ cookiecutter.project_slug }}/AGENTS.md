@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Python project scaffolding/template repository that demonstrates best practices for Python 3.13 projects. It uses `uv` as the package manager and includes a custom development CLI (`./dev`) for common tasks.
+This is a Python project that demonstrates best practices for Python {{ cookiecutter.python_version.split(',')[0].replace('>=', '') }} projects. It uses `uv` as the package manager and includes a custom development CLI (`./dev`) for common tasks.
 
 ## Development Commands
 
@@ -56,7 +56,7 @@ To add a new command:
 2. Implement `add_parser(subparsers)` and `execute(args)` functions
 3. Import and register it in `scripts/dev.py`
 
-### Main Application (`src/python_scaffolding/main.py`)
+### Main Application (`src/{{ cookiecutter.package_name }}/main.py`)
 
 The main application demonstrates:
 - **Environment-based configuration**: Uses `python-dotenv` to load `.env` file
@@ -82,7 +82,7 @@ def test_example(temp_dir, test_data_dir):
 
 ## Configuration
 
-- **Package metadata**: `pyproject.toml` (Python 3.13 required)
+- **Package metadata**: `pyproject.toml` (Python {{ cookiecutter.python_version.split(',')[0].replace('>=', '') }} required)
 - **Environment variables**: Copy `example.env` to `.env` and customize
 - **Type checking**: Strict mode for `src/`, relaxed for `tests/` (see `tool.mypy` in `pyproject.toml`)
 - **Dependencies**:
