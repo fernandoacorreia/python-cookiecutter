@@ -9,6 +9,7 @@ description = "Python Scaffolding"
 requires-python = ">=3.13,<3.14"
 dependencies = [
     "pydantic",
+    "python-dotenv",
 ]
 
 [dependency-groups]
