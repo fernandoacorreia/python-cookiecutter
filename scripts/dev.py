@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 
-def run_command(cmd, description=""):
+def run_command(cmd: str, description: str = "") -> bool:
     """Run a command and handle errors."""
     if description:
         print(f"Running: {description}")
@@ -18,7 +18,7 @@ def run_command(cmd, description=""):
         return False
 
 
-def cmd_run():
+def cmd_run() -> bool:
     """Run the main application."""
     print("Running the application...")
     return run_command(
@@ -26,7 +26,7 @@ def cmd_run():
     )
 
 
-def cmd_lint():
+def cmd_lint() -> bool:
     """Run linting tools (black, ruff, mypy)."""
     print("Running linting tools...")
 
@@ -61,7 +61,7 @@ def cmd_lint():
     return success
 
 
-def cmd_build():
+def cmd_build() -> bool:
     """Build the wheel file."""
     print("Building wheel file...")
 
@@ -72,7 +72,7 @@ def cmd_build():
     return run_command("uv build", "Building wheel file")
 
 
-def main():
+def main() -> None:
     """Main entry point for dev script."""
     parser = argparse.ArgumentParser(
         description="Development helper script",
