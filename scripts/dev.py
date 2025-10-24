@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from commands import build, claude, lint, run
+from commands import build, claude, lint, run, test
 
 
 def _prepare_parser() -> argparse.ArgumentParser:
@@ -16,6 +16,7 @@ def _prepare_parser() -> argparse.ArgumentParser:
     claude.add_parser(subparsers)
     lint.add_parser(subparsers)
     run.add_parser(subparsers)
+    test.add_parser(subparsers)
 
     return parser
 
