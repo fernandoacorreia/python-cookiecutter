@@ -6,7 +6,6 @@ across all test files in the tests directory.
 
 import pytest
 import tempfile
-import shutil
 from pathlib import Path
 from contextlib import contextmanager
 
@@ -20,7 +19,7 @@ def test_data_dir():
 @pytest.fixture
 def temp_dir():
     """Create a temporary directory that is automatically cleaned up after the test passes.
-    
+
     Usage example:
         def test_file_operations(temp_dir):
             with temp_dir() as temp_path:
@@ -28,9 +27,10 @@ def temp_dir():
                 (temp_path / "test.txt").write_text("Hello, World!")
                 # Directory will be automatically deleted when exiting the context
     """
+
     @contextmanager
     def _temp_dir():
         with tempfile.TemporaryDirectory() as temp_path_str:
             yield Path(temp_path_str)
-    
+
     return _temp_dir

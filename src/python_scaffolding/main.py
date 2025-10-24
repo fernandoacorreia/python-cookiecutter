@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 class JSONFormatter(logging.Formatter):
     """Custom JSON formatter for log messages."""
-    
+
     def format(self, record: logging.LogRecord) -> str:
         log_entry = {
             "timestamp": self.formatTime(record, self.datefmt),
@@ -16,11 +16,11 @@ class JSONFormatter(logging.Formatter):
             "logger": record.name,
             "message": record.getMessage(),
         }
-        
+
         # Add exception info if present
         if record.exc_info:
             log_entry["exception"] = self.formatException(record.exc_info)
-            
+
         return json.dumps(log_entry)
 
 
@@ -28,16 +28,16 @@ def configure_logging() -> None:
     """Configure logging based on environment variables."""
     # Load environment variables from .env file
     load_dotenv()
-    
+
     # Get log level from environment, default to INFO
     log_level = os.getenv("LOG_LEVEL", "INFO").upper()
-    
+
     # Convert string to logging level
     numeric_level = getattr(logging, log_level, logging.INFO)
-    
+
     # Get log format from environment, default to pretty
     log_format = os.getenv("LOG_FORMAT", "pretty").lower()
-    
+
     # Configure logging format based on log_format
     if log_format == "json":
         formatter = JSONFormatter(datefmt="%Y-%m-%d %H:%M:%S")
@@ -46,21 +46,21 @@ def configure_logging() -> None:
         formatter = None
         format_string = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     else:
-        raise ValueError(f"Invalid LOG_FORMAT '{log_format}'. Must be 'json' or 'pretty'")
-    
+        raise ValueError(
+            f"Invalid LOG_FORMAT '{log_format}'. Must be 'json' or 'pretty'"
+        )
+
     # Configure logging
     logging.basicConfig(
-        level=numeric_level,
-        format=format_string,
-        datefmt="%Y-%m-%d %H:%M:%S"
+        level=numeric_level, format=format_string, datefmt="%Y-%m-%d %H:%M:%S"
     )
-    
+
     # Apply JSON formatter if needed
     if formatter:
         root_logger = logging.getLogger()
         for handler in root_logger.handlers:
             handler.setFormatter(formatter)
-    
+
     logger = logging.getLogger(__name__)
     logger.info(f"Logging configured with level: {log_level}, format: {log_format}")
 
@@ -98,16 +98,16 @@ def main() -> None:
     """Hello world main function."""
     # Configure logging first
     configure_logging()
-    
+
     # Get logger for this module
     logger = logging.getLogger(__name__)
-    
+
     # Log some messages to demonstrate the logging configuration
     logger.debug("This is a debug message")
     logger.info("This is an info message")
     logger.warning("This is a warning message")
     logger.error("This is an error message")
-    
+
     # Print greeting
     greeting = greetings()
     print(greeting)

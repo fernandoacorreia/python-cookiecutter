@@ -30,11 +30,11 @@ def execute(args: argparse.Namespace) -> bool:
     """Run tests using pytest."""
     # Build the pytest command
     cmd_parts = ["uv", "run", "--dev", "-m", "pytest"]
-    
+
     # Add any unknown arguments (extra args passed to pytest)
-    if hasattr(args, 'unknown_args') and args.unknown_args:
+    if hasattr(args, "unknown_args") and args.unknown_args:
         cmd_parts.extend(args.unknown_args)
-    
+
     cmd = " ".join(cmd_parts)
-    
+
     return run_command(cmd, "pytest")
