@@ -19,6 +19,7 @@ dependencies = [
 dev = [
     "black",
     "mypy",
+    "pre-commit",
     "pytest",
     "pytest-cov",
     "ruff",
@@ -41,3 +42,6 @@ disallow_untyped_defs = false
 pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "--tb=short --import-mode=importlib"
+
+[tool.isort]
+profile = "black"

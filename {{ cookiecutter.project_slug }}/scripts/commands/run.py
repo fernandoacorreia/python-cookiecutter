@@ -8,7 +8,7 @@ def add_parser(subparsers: argparse._SubParsersAction) -> None:
     run_help = """Run the main application.
 
 This command executes the main application using:
-    uv run --dev python -m {{ cookiecutter.package_name }}.main
+    uv run --dev python -m my_project.main
 """
     run_parser = subparsers.add_parser(
         "run",
@@ -21,4 +21,4 @@ This command executes the main application using:
 
 def execute(args: argparse.Namespace) -> bool:
     """Run the main application."""
-    return run_command("uv run --dev python -m {{ cookiecutter.package_name }}.main", "Main application")
+    return run_command("uv run --dev python -m my_project.main", "Main application")

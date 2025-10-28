@@ -24,7 +24,7 @@ Any additional arguments passed to this command will be forwarded to the Claude 
 def execute(args: argparse.Namespace) -> bool:
     """Run Claude CLI with additional arguments."""
     # Build the command with additional arguments
-    cmd_parts = ["uv run claude"]
+    cmd_parts = ["uv run --dev claude"]
 
     # Use unknown_args if available (passed from main dev script)
     if hasattr(args, "unknown_args") and args.unknown_args:

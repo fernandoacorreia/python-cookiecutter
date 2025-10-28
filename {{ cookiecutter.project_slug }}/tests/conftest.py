@@ -4,10 +4,11 @@ This file contains shared fixtures and configuration that can be used
 across all test files in the tests directory.
 """
 
-import pytest
 import tempfile
-from pathlib import Path
 from contextlib import contextmanager
+from pathlib import Path
+
+import pytest
 
 
 @pytest.fixture

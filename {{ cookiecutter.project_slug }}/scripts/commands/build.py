@@ -9,7 +9,7 @@ def add_parser(subparsers: argparse._SubParsersAction) -> None:
 
 This command builds a wheel distribution file using:
     uv build
-    
+
 The wheel file will be created in the 'dist/' directory.
 """
     build_parser = subparsers.add_parser(

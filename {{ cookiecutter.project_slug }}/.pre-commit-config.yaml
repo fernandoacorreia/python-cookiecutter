@@ -1,0 +1,76 @@
+# pre-commit configuration. See https://pre-commit.com/ for more information.
+# Run 'uv run --dev pre-commit autoupdate' to update the hooks to the latest version.
+default_language_version:
+  python: python3.13
+repos:
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.37.1
+    hooks:
+      - id: yamllint
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: name-tests-test
+      - id: trailing-whitespace
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+  - repo: https://github.com/PyCQA/isort
+    rev: 7.0.0
+    hooks:
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 25.9.0
+    hooks:
+      - id: black
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.2
+    hooks:
+      - id: ruff-check
+        args: ["--fix"]
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.9.5
+    hooks:
+      - id: uv-lock
+  - repo: local
+    hooks:
+      # Running mypy outside of the pre-commit sandboxed environment so that
+      # it has access to all types from the project.
+      - id: mypy
+        name: mypy
+        entry: uv run --dev -m mypy .
+        language: system
+        pass_filenames: false
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.20.0
+    hooks:
+      - id: yamlfmt
+        args: [-formatter, indentlessarrays=true]
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      - id: gitleaks
+  - repo: local
+    hooks:
+      # Catch any reformatting that happened in CI indicating an improperly formatted commit.
+      - id: detect-dirty-working-tree
+        name: Check for dirty working tree (CI only)
+        entry: uv run --dev ./scripts/detect_dirty_working_tree.py
+        language: system
+        pass_filenames: false

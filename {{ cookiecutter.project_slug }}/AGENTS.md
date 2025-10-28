@@ -1,6 +1,6 @@
-# CLAUDE.md
+# Coding Agent Instructions
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to coding agents when working with code in this repository.
 
 ## Project Overview
 
@@ -11,6 +11,9 @@ This is a Python project that demonstrates best practices for Python {{ cookiecu
 All development tasks are accessed through the `./dev` script:
 
 ```bash
+# Initialize dev tools
+./dev init
+
 # Run the application
 ./dev run
 

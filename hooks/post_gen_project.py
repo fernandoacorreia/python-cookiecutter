@@ -72,6 +72,10 @@ def main():
     if not run_command(["uv", "sync", "--dev"], "Initializing virtual environment and installing dependencies"):
         print("Warning: Dependency installation failed")
 
+    # Initialize development tools
+    if not run_command(["./dev", "init"], "Initializing development tools"):
+        print("Warning: Development tools initialization failed")
+
     # Print success message
     print(f"\n{'='*60}")
     print("Project setup complete!")

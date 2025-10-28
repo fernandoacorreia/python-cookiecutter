@@ -1,5 +1,5 @@
-# {{ cookiecutter.project_name }}
-{{ cookiecutter.project_description }}
+# My Project
+A Python project following best practices
 
 ## Development Setup
 
@@ -8,41 +8,37 @@
 
 ### Setup Development Environment
 ```bash
-# Create virtual environment
-uv venv --python {{ cookiecutter.python_version.split(',')[0].replace('>=', '') }}
+# Install dependencies and create virtual environment
+uv sync --dev
 
 # Activate the virtual environment
 source .venv/bin/activate
 
-# Install dependencies and create virtual environment
-uv sync --dev
+# Initialize development tools
+./dev init
 ```
 
 ### Running the Application
 ```bash
-# Run the main application
-uv run python -m {{ cookiecutter.package_name }}.main
+./dev run
 ```
 
 ### Code Formatting and Linting
 ```bash
-# Format code with black
-uv run --dev -m black .
-
-# Lint code with ruff
-uv run --dev -m ruff check --fix .
+./dev lint
 ```
 
 ### Testing
 ```bash
-# Run unit tests
-uv run pytest -v
+./dev test
 ```
 
 ### Building
 ```bash
-# Build wheel file
-uv build
+./dev build
 ```
 
-The wheel file will be created in the `dist/` directory.
+### Running Claude Code with the virtual environment activated
+```bash
+./dev claude
+```
