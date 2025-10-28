@@ -58,6 +58,12 @@ year:
 
 # Post-generation tasks
 _tasks:
+  # Initialize git repository first (required by pre-commit)
+  - >
+    {% if _copier_operation == "copy" %}
+    git init && echo "Initialized git repository"
+    {% endif %}
+
   # Create CLAUDE.md symlink
   - >
     {% if _copier_operation == "copy" %}
@@ -70,16 +76,10 @@ _tasks:
     uv sync --dev
     {% endif %}
 
-  # Initialize development tools
+  # Initialize development tools (requires git to be initialized)
   - >
     {% if _copier_operation == "copy" %}
     ./dev init
-    {% endif %}
-
-  # Initialize git repository
-  - >
-    {% if _copier_operation == "copy" %}
-    git init && echo "Initialized git repository"
     {% endif %}
 
   # Create initial commit

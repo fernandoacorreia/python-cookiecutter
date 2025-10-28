@@ -25,23 +25,17 @@ A Copier template for Python projects following modern best practices with Pytho
 
 ```bash
 # Using uv (recommended)
-uv tool install copier
-
-# Using pip
-pip install copier
-
-# Using pipx
-pipx install copier
+uv tool install --with jinja2-time copier
 ```
 
 ### Generate a New Project
 
 ```bash
 # From GitHub
-copier copy gh:fernandoacorreia/python-cookiecutter your-project-name
+copier copy --trust gh:fernandoacorreia/python-cookiecutter your-project-name
 
 # From local directory
-copier copy /path/to/python-cookiecutter your-project-name
+copier copy --trust /path/to/python-cookiecutter your-project-name
 ```
 
 You will be prompted for:
@@ -57,10 +51,10 @@ You will be prompted for:
 ### Post-Generation Setup
 
 The template includes post-generation tasks that automatically:
-1. Creates CLAUDE.md symlink to AGENTS.md
-2. Initializes virtual environment and installs dependencies (via `uv sync --dev`)
-3. Initializes development tools (via `./dev init`)
-4. Initializes a Git repository
+1. Initializes a Git repository
+2. Creates CLAUDE.md symlink to AGENTS.md
+3. Initializes virtual environment and installs dependencies (via `uv sync --dev`)
+4. Initializes development tools (via `./dev init`)
 5. Creates an initial commit
 
 After generation, activate your environment and start coding:
