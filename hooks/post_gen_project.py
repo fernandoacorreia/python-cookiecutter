@@ -54,6 +54,14 @@ def main():
     else:
         print("Warning: AGENTS.md not found")
 
+    # Initialize virtual environment and install dependencies
+    if not run_command(["uv", "sync", "--dev"], "Initializing virtual environment and installing dependencies"):
+        print("Warning: Dependency installation failed")
+
+    # Initialize development tools
+    if not run_command(["./dev", "init"], "Initializing development tools"):
+        print("Warning: Development tools initialization failed")
+
     # Initialize git repository
     if not run_command(["git", "init"], "Initializing Git repository"):
         print("Warning: Git initialization failed")
@@ -67,14 +75,6 @@ def main():
         "Creating initial commit",
     ):
         print("Warning: Git commit failed")
-
-    # Initialize virtual environment and install dependencies
-    if not run_command(["uv", "sync", "--dev"], "Initializing virtual environment and installing dependencies"):
-        print("Warning: Dependency installation failed")
-
-    # Initialize development tools
-    if not run_command(["./dev", "init"], "Initializing development tools"):
-        print("Warning: Development tools initialization failed")
 
     # Print success message
     print(f"\n{'='*60}")
