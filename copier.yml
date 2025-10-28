@@ -40,8 +40,8 @@ author_email:
 
 python_version:
   type: str
-  help: Python version constraint
-  default: ">=3.13,<3.14"
+  help: Python version (e.g., 3.13)
+  default: "3.13"
 
 license:
   type: str

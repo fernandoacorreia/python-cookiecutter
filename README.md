@@ -45,7 +45,7 @@ You will be prompted for:
 - **project_description**: One-line description of your project
 - **author_name**: Your full name
 - **author_email**: Your email address
-- **python_version**: Python version constraint (default: ">=3.13,<3.14")
+- **python_version**: Python version (e.g., "3.13")
 - **license**: License type (Apache-2.0 or Proprietary)
 
 ### Post-Generation Setup

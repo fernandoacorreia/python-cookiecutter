@@ -9,7 +9,7 @@ description = "{{ project_description }}"
 authors = [
     { name = "{{ author_name }}", email = "{{ author_email }}" }
 ]
-requires-python = "{{ python_version }}"
+requires-python = "=={{ python_version }}.*"
 dependencies = [
     "pydantic",
     "python-dotenv",
@@ -26,10 +26,10 @@ dev = [
 ]
 
 [tool.ruff]
-target-version = "py{{ python_version.split(',')[0].replace('>=', '').replace('.', '') }}"
+target-version = "py{{ python_version.replace('.', '') }}"
 
 [tool.mypy]
-python_version = "{{ python_version.split(',')[0].replace('>=', '') }}"
+python_version = "{{ python_version }}"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

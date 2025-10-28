@@ -4,7 +4,7 @@ This file provides guidance to coding agents when working with code in this repo
 
 ## Project Overview
 
-This is a Python project that demonstrates best practices for Python {{ python_version.split(',')[0].replace('>=', '') }} projects. It uses `uv` as the package manager and includes a custom development CLI (`./dev`) for common tasks.
+This is a Python project that demonstrates best practices for Python {{ python_version }} projects. It uses `uv` as the package manager and includes a custom development CLI (`./dev`) for common tasks.
 
 ## Development Commands
 
@@ -85,7 +85,7 @@ def test_example(temp_dir, test_data_dir):
 
 ## Configuration
 
-- **Package metadata**: `pyproject.toml` (Python {{ python_version.split(',')[0].replace('>=', '') }} required)
+- **Package metadata**: `pyproject.toml` (Python {{ python_version }} required)
 - **Environment variables**: Copy `example.env` to `.env` and customize
 - **Type checking**: Strict mode for `src/`, relaxed for `tests/` (see `tool.mypy` in `pyproject.toml`)
 - **Dependencies**:
