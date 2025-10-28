@@ -32,10 +32,10 @@ uv tool install --with jinja2-time copier
 
 ```bash
 # From GitHub
-copier copy --trust gh:fernandoacorreia/python-cookiecutter your-project-name
+copier copy --trust gh:fernandoacorreia/python-project-template your-project-name
 
 # From local directory
-copier copy --trust /path/to/python-cookiecutter your-project-name
+copier copy --trust /path/to/python-project-template your-project-name
 ```
 
 You will be prompted for:
