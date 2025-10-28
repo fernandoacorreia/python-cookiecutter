@@ -58,33 +58,13 @@ year:
 
 # Post-generation tasks
 _tasks:
-  # Initialize git repository first (required by pre-commit)
+  # Initialize git repository, create symlink, set up environment, and create initial commit
   - >
     {% if _copier_operation == "copy" %}
-    git init && echo "Initialized git repository"
-    {% endif %}
-
-  # Create CLAUDE.md symlink
-  - >
-    {% if _copier_operation == "copy" %}
-    ln -sf AGENTS.md CLAUDE.md && echo "Created CLAUDE.md symlink"
-    {% endif %}
-
-  # Initialize virtual environment and install dependencies
-  - >
-    {% if _copier_operation == "copy" %}
-    uv sync --dev
-    {% endif %}
-
-  # Initialize development tools (requires git to be initialized)
-  - >
-    {% if _copier_operation == "copy" %}
-    ./dev init
-    {% endif %}
-
-  # Create initial commit
-  - >
-    {% if _copier_operation == "copy" %}
+    git init && echo "Initialized git repository" &&
+    ln -sf AGENTS.md CLAUDE.md && echo "Created CLAUDE.md symlink" &&
+    uv sync --dev &&
+    ./dev init &&
     git add . && git commit -m "Initial commit from copier template" && echo "Created initial commit"
     {% endif %}
 
