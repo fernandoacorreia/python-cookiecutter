@@ -1,4 +1,4 @@
-# Python Copier Template
+# Python Project Template
 
 A Copier template for Python projects following modern best practices with Python 3.13+.
 
