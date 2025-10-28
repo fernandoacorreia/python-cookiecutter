@@ -39,12 +39,12 @@ copier copy --trust /path/to/python-project-template your-project-name
 ```
 
 You will be prompted for:
-- **project_name**: Human-readable project name (e.g., "My Awesome Project")
-- **project_slug**: URL/package-friendly name with hyphens (auto-generated, e.g., "my-awesome-project")
-- **package_name**: Python module name with underscores (auto-generated, e.g., "my_awesome_project")
-- **project_description**: One-line description of your project
-- **author_name**: Your full name
-- **author_email**: Your email address
+- **project_name**: Human-readable project name (e.g., "My Project")
+- **project_slug**: URL/package-friendly name with hyphens (auto-generated, e.g., "my-project")
+- **package_name**: Python module name with underscores (auto-generated, e.g., "my_project")
+- **project_description**: One-line description of your project (e.g., "A Python project following best practices")
+- **author_name**: Your full name (e.g., "Your Name")
+- **author_email**: Your email address (e.g., "your.email@example.com")
 - **python_version**: Python version (e.g., "3.13")
 - **license**: License type (Apache-2.0 or Proprietary)
 

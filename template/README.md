@@ -1,5 +1,5 @@
-# My Project
-A Python project following best practices
+# {{ project_name }}
+{{ project_description }}
 
 ## Development Setup
 
