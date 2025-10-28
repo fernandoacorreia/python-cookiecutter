@@ -61,11 +61,23 @@ _tasks:
   # Initialize git repository, create symlink, set up environment, and create initial commit
   - >
     {% if _copier_operation == "copy" %}
-    git init && echo "Initialized git repository" &&
-    ln -sf AGENTS.md CLAUDE.md && echo "Created CLAUDE.md symlink" &&
+    git init &&
+    echo "Initialized git repository" &&
+    ln -sf AGENTS.md CLAUDE.md &&
+    echo "Created CLAUDE.md symlink" &&
     uv sync --dev &&
     ./dev init &&
-    git add . && git commit -m "Initial commit from copier template" && echo "Created initial commit"
+    git add . &&
+    git commit -m "Initial commit from copier template" &&
+    echo "Created initial commit" &&
+    DIR=$(pwd) &&
+    echo &&
+    echo "✅ Template created at $DIR" &&
+    echo "To get started on the new project:" &&
+    echo &&
+    echo "cd $DIR" &&
+    echo "source .venv/bin/activate" &&
+    echo "./dev --help"
     {% endif %}
 
 # Exclude patterns
