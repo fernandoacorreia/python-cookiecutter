@@ -1,0 +1,89 @@
+# Copier template configuration
+_min_copier_version: "9.0.0"
+
+# Template settings
+_subdirectory: template
+_answers_file: .copier-answers.yml
+_jinja_extensions:
+  - jinja2_time.TimeExtension
+
+# Questions
+project_name:
+  type: str
+  help: What is your project name?
+  default: My Project
+
+project_slug:
+  type: str
+  help: Project slug (URL-friendly name with hyphens)
+  default: "{{ project_name.lower().replace(' ', '-').replace('_', '-') }}"
+
+package_name:
+  type: str
+  help: Python package name (underscores instead of hyphens)
+  default: "{{ project_slug.replace('-', '_') }}"
+
+project_description:
+  type: str
+  help: Brief description of your project
+  default: A Python project following best practices
+
+author_name:
+  type: str
+  help: Your full name
+  default: Your Name
+
+author_email:
+  type: str
+  help: Your email address
+  default: your.email@example.com
+
+python_version:
+  type: str
+  help: Python version (e.g., 3.13)
+  default: "3.13"
+
+license:
+  type: str
+  help: Choose a license
+  choices:
+    - Apache-2.0
+    - Proprietary
+  default: Apache-2.0
+
+year:
+  type: str
+  help: Copyright year
+  default: "{% now 'utc', '%Y' %}"
+
+# Post-generation tasks
+_tasks:
+  # Initialize git repository, create symlink, set up environment, and create initial commit
+  - >
+    {% if _copier_operation == "copy" %}
+    git init &&
+    echo "Initialized git repository" &&
+    ln -sf AGENTS.md CLAUDE.md &&
+    echo "Created CLAUDE.md symlink" &&
+    uv sync --dev &&
+    ./dev init &&
+    git add . &&
+    git commit -m "Initial commit from copier template" &&
+    echo "Created initial commit" &&
+    DIR=$(pwd) &&
+    echo &&
+    echo "✅ Template created at $DIR" &&
+    echo "To get started on the new project:" &&
+    echo &&
+    echo "cd $DIR" &&
+    echo "source .venv/bin/activate" &&
+    echo "./dev --help"
+    {% endif %}
+
+# Exclude patterns
+_exclude:
+  - .git
+  - .venv
+  - __pycache__
+  - "*.pyc"
+  - .DS_Store

@@ -1,4 +1,4 @@
-{% if cookiecutter.license == "Apache-2.0" %}                                 Apache License
+{% if license == "Apache-2.0" %}                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -186,7 +186,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright {{ cookiecutter.year }} {{ cookiecutter.author_name }}
+   Copyright {{ year }} {{ author_name }}
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -199,5 +199,5 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-{% else %}Copyright (c) {{ cookiecutter.year }}, {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>. All rights reserved. This software is proprietary and confidential.
+{% else %}Copyright (c) {{ year }}, {{ author_name }} <{{ author_email }}>. All rights reserved. This software is proprietary and confidential.
 {% endif -%}
