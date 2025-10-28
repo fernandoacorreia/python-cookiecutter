@@ -1,11 +1,12 @@
-# Python Cookiecutter Template
+# Python Copier Template
 
-A Cookiecutter template for Python projects following modern best practices with Python 3.13+.
+A Copier template for Python projects following modern best practices with Python 3.13+.
 
 ## Features
 
 - **Modern Python**: Python 3.13+ with full type hints and strict type checking
 - **Fast Package Manager**: Uses [uv](https://github.com/astral-sh/uv) for dependency management
+- **Template Updates**: Supports updating existing projects with `copier update`
 - **Custom Development CLI**: Plugin-based `./dev` script for common tasks
 - **Comprehensive Testing**: pytest with custom fixtures and coverage support
 - **Code Quality**: Integrated black, ruff, and mypy
@@ -15,30 +16,32 @@ A Cookiecutter template for Python projects following modern best practices with
 
 ## Prerequisites
 
-- [uv](https://github.com/astral-sh/uv) - Fast Python package manager
+- [uv](https://github.com/astral-sh/uv) - Fast Python package manager (used in generated projects)
+- [Copier](https://copier.readthedocs.io/) - Template engine for project generation
 
 ## Quick Start
 
-### Generate a New Project
-
-Using `uv` (recommended - no need to install Cookiecutter):
+### Install Copier
 
 ```bash
-# From GitHub (replace with your username/repo)
-uv run --with cookiecutter cookiecutter gh:fernandoacorreia/python-cookiecutter
+# Using uv (recommended)
+uv tool install copier
 
-# From local directory
-uv run --with cookiecutter cookiecutter /path/to/python-cookiecutter
+# Using pip
+pip install copier
+
+# Using pipx
+pipx install copier
 ```
 
-Alternatively, if you have Cookiecutter installed:
+### Generate a New Project
 
 ```bash
 # From GitHub
-cookiecutter gh:fernandoacorreia/python-cookiecutter
+copier copy gh:fernandoacorreia/python-cookiecutter your-project-name
 
 # From local directory
-cookiecutter /path/to/python-cookiecutter
+copier copy /path/to/python-cookiecutter your-project-name
 ```
 
 You will be prompted for:
@@ -53,19 +56,40 @@ You will be prompted for:
 
 ### Post-Generation Setup
 
-The template includes a post-generation hook that automatically:
+The template includes post-generation tasks that automatically:
 1. Creates CLAUDE.md symlink to AGENTS.md
-2. Initializes a Git repository
-3. Creates an initial commit
-4. Initializes virtual environment and installs dependencies (via `uv sync --dev`)
+2. Initializes virtual environment and installs dependencies (via `uv sync --dev`)
+3. Initializes development tools (via `./dev init`)
+4. Initializes a Git repository
+5. Creates an initial commit
 
 After generation, activate your environment and start coding:
 
 ```bash
 cd your-project-name
 source .venv/bin/activate
-./dev run
+./dev --help
 ```
+
+### Updating an Existing Project
+
+To update a project generated from this template:
+
+```bash
+cd your-project-name
+copier update
+```
+
+Copier will prompt you for any new questions and update your project while preserving your customizations.
+
+### Answers File
+
+Your project's `.copier-answers.yml` file tracks:
+- Template source (`_src_path`)
+- Template version (`_commit`)
+- Your answers to template questions
+
+Keep this file in version control to enable future updates.
 
 ## Generated Project Structure
 
@@ -121,25 +145,26 @@ The generated project includes a `./dev` script:
 
 To customize this template for your needs:
 
-1. Edit `cookiecutter.json` to add/modify variables
-2. Update template files in `{{ cookiecutter.project_slug }}/`
-3. Modify `hooks/post_gen_project.py` for custom post-generation tasks
-4. Use Jinja2 syntax for dynamic content: `{{ cookiecutter.variable_name }}`
+1. Edit `copier.yml` to add/modify variables
+2. Update template files in `template/`
+3. Add `.jinja` suffix to files that contain template variables
+4. Modify `_tasks` in `copier.yml` for custom post-generation tasks
+5. Use Jinja2 syntax for dynamic content: `{{ variable_name }}`
 
 ### Example: Adding a New Variable
 
-1. Add to `cookiecutter.json`:
-```json
-{
-  "project_name": "...",
-  "your_new_variable": "default_value"
-}
+1. Add to `copier.yml`:
+```yaml
+your_new_variable:
+  type: str
+  help: Description of your variable
+  default: default_value
 ```
 
-2. Use in template files:
+2. Use in template files (file must have `.jinja` suffix):
 ```python
-# In any template file
-MY_CONFIG = "{{ cookiecutter.your_new_variable }}"
+# In any template file with .jinja suffix
+MY_CONFIG = "{{ your_new_variable }}"
 ```
 
 ## Architecture Highlights
@@ -171,7 +196,8 @@ Projects generated from this template will use the license you select during pro
 
 ## Resources
 
-- [Cookiecutter Documentation](https://cookiecutter.readthedocs.io/)
+- [Copier Documentation](https://copier.readthedocs.io/)
+- [Copier Template Creation Guide](https://copier.readthedocs.io/en/stable/creating/)
 - [uv Documentation](https://github.com/astral-sh/uv)
 - [Python Packaging Guide](https://packaging.python.org/)
 - [pytest Documentation](https://docs.pytest.org/)
