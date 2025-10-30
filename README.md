@@ -93,7 +93,7 @@ copier copy --trust --defaults --data-file answers.yml \
 The template includes post-generation tasks that automatically:
 1. Initializes a Git repository
 2. Creates CLAUDE.md symlink to AGENTS.md
-3. Initializes virtual environment and installs dependencies (via `uv sync --dev`)
+3. Initializes virtual environment and installs dependencies (via `uv sync`)
 4. Initializes development tools (via `./dev init`)
 5. Creates an initial commit
 
