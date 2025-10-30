@@ -40,7 +40,7 @@ All development tasks are accessed through the `./dev` script:
 # Run tests matching a pattern
 ./dev test -k test_function
 
-# Run linting (black, ruff, mypy)
+# Run linting (black, ruff, basedpyright)
 ./dev lint
 
 # Build wheel distribution
@@ -95,7 +95,7 @@ def test_example(temp_dir, test_data_dir):
 
 - **Package metadata**: `pyproject.toml` (Python {{ python_version }} required)
 - **Environment variables**: Copy `example.env` to `.env` and customize
-- **Type checking**: Strict mode for `src/`, relaxed for `tests/` (see `tool.mypy` in `pyproject.toml`)
+- **Type checking**: Strict mode for `src/`, relaxed for `tests/` (see `tool.basedpyright` in `pyproject.toml`)
 - **Dependencies**:
   - Runtime: pydantic, python-dotenv
-  - Dev: black, ruff, mypy, pytest, pytest-cov
+  - Dev: black, ruff, basedpyright, pytest, pytest-cov

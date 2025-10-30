@@ -50,11 +50,11 @@ repos:
       - id: uv-lock
   - repo: local
     hooks:
-      # Running mypy outside of the pre-commit sandboxed environment so that
+      # Running basedpyright outside of the pre-commit sandboxed environment so that
       # it has access to all types from the project.
-      - id: mypy
-        name: mypy
-        entry: uv run --dev -m mypy .
+      - id: basedpyright
+        name: basedpyright
+        entry: uv run --dev -m basedpyright --level error
         language: system
         pass_filenames: false
   - repo: https://github.com/google/yamlfmt

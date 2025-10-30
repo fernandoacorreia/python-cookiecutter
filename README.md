@@ -9,7 +9,7 @@ A Copier template for Python projects following modern best practices with Pytho
 - **Template Updates**: Supports updating existing projects with `copier update`
 - **Custom Development CLI**: Plugin-based `./dev` script for common tasks
 - **Comprehensive Testing**: pytest with custom fixtures and coverage support
-- **Code Quality**: Integrated black, ruff, and mypy
+- **Code Quality**: Integrated black, ruff, and basedpyright
 - **Environment-Based Configuration**: python-dotenv for environment variables
 - **Configurable Logging**: Supports both human-readable and JSON structured logging
 - **License Options**: Apache 2.0 or Proprietary
@@ -47,6 +47,46 @@ You will be prompted for:
 - **author_email**: Your email address (e.g., "your.email@example.com")
 - **python_version**: Python version (e.g., "3.13")
 - **license**: License type (Apache-2.0 or Proprietary)
+
+### Running Copier Non-Interactively (for Scripts)
+
+To run Copier without prompts in scripts or automated workflows, use the `--data` flag to pass variables:
+
+```bash
+# Using --data flags
+copier copy --trust --defaults \
+  --data project_name="My Project" \
+  --data project_slug="my-project" \
+  --data package_name="my_project" \
+  --data project_description="A Python project" \
+  --data author_name="John Doe" \
+  --data author_email="john@example.com" \
+  --data python_version="3.13" \
+  --data license="Apache-2.0" \
+  /path/to/python-project-template your-project-name
+```
+
+Alternatively, use a data file:
+
+```bash
+# Create answers.yml
+cat > answers.yml <<EOF
+project_name: My Project
+project_slug: my-project
+package_name: my_project
+project_description: A Python project
+author_name: John Doe
+author_email: john@example.com
+python_version: "3.13"
+license: Apache-2.0
+EOF
+
+# Use --data-file
+copier copy --trust --defaults --data-file answers.yml \
+  /path/to/python-project-template your-project-name
+```
+
+**Note**: The `--defaults` flag is required when running non-interactively to use default values for any variables not explicitly provided.
 
 ### Post-Generation Setup
 
@@ -164,7 +204,7 @@ MY_CONFIG = "{{ your_new_variable }}"
 - Example tests demonstrating best practices
 
 ### Type Safety
-- Strict mypy checking for production code (`src/`)
+- Strict basedpyright checking for production code (`src/`)
 - Relaxed checking for tests (`tests/`)
 - PEP 561 compliant with `py.typed` marker
 
