@@ -38,6 +38,20 @@ source .venv/bin/activate
 ./dev build
 ```
 
+### Cleaning
+```bash
+# Clean build artifacts and cache directories
+./dev clean
+```
+
+Removes:
+- `dist/` directory (build artifacts)
+- `.venv/` directory (virtual environment)
+- `.local/` directory (local development files)
+- `.pytest_cache/` directory (pytest cache)
+- `.ruff_cache/` directory (ruff cache)
+- `__pycache__/` directories (recursively)
+
 ### Running Claude Code with the virtual environment activated
 ```bash
 ./dev claude

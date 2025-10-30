@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from .commands import build, claude, init, lint, run, test
+from .commands import build, claude, clean, init, lint, run, test
 
 
 def _prepare_parser() -> argparse.ArgumentParser:
@@ -14,6 +14,7 @@ def _prepare_parser() -> argparse.ArgumentParser:
     # Add commands in alphabetical order
     build.add_parser(subparsers)
     claude.add_parser(subparsers)
+    clean.add_parser(subparsers)
     init.add_parser(subparsers)
     lint.add_parser(subparsers)
     run.add_parser(subparsers)
