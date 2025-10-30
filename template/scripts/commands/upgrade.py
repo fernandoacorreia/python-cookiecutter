@@ -29,5 +29,5 @@ def execute(args: argparse.Namespace) -> bool:
     """Upgrade all dependencies to their latest allowed versions."""
     return run_command(
         "uv sync --upgrade --all-extras --dev",
-        "uv sync --upgrade --all-extras --dev",
+        "dependencies upgrade",
     )
