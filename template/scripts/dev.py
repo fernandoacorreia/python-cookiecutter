@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from commands import build, claude, init, lint, run, test
+from .commands import build, claude, init, lint, run, test
 
 
 def _prepare_parser() -> argparse.ArgumentParser:

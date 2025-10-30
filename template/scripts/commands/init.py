@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -7,7 +9,7 @@ from .utils import run_command
 INITIALIZATION_MARKER = Path(".local/dev/initialization.txt")
 
 
-def add_parser(subparsers: argparse._SubParsersAction) -> None:
+def add_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     """Add init command parser."""
     init_help = """Initialize the development tools.
 

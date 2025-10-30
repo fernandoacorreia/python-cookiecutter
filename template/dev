@@ -9,4 +9,4 @@ if ! command -v uv &> /dev/null; then
     exit 1
 fi
 
-exec uv run --dev python ./scripts/dev.py "$@"
+exec uv run --dev python -m scripts.dev "$@"

@@ -1,9 +1,11 @@
+from __future__ import annotations
+
 import argparse
 
 from .utils import run_command
 
 
-def add_parser(subparsers: argparse._SubParsersAction) -> None:
+def add_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     """Add lint command parser."""
     lint_help = """Run code quality checks using pre-commit hooks on all files.
 
