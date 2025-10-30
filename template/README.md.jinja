@@ -18,6 +18,17 @@ source .venv/bin/activate
 ./dev init
 ```
 
+### Upgrading Dependencies
+```bash
+# Upgrade all dependencies to their latest allowed versions
+./dev upgrade
+```
+
+This command runs `uv sync --upgrade --all-extras --dev` which will:
+- Recreate the virtual environment
+- Upgrade all dependencies (including extras and dev dependencies) to their latest allowed versions
+- Update the lock file accordingly
+
 ### Running the Application
 ```bash
 ./dev run
