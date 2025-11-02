@@ -14,7 +14,7 @@ def add_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) 
     init_help = """Initialize the development tools.
 
 This command sets up the development environment by:
-- Installing pre-commit hooks (uv run pre-commit install)
+- Installing prek hooks (uv run prek install)
 - Creating initialization marker file (.local/dev/initialization.txt)
 """
     init_parser = subparsers.add_parser(
@@ -30,9 +30,9 @@ def execute(args: argparse.Namespace) -> bool:
     """Initialize the development environment."""
     success = True
 
-    # Install pre-commit hooks
-    print("\nInstalling pre-commit hooks...")
-    if not run_command("uv run --dev pre-commit install", "pre-commit hooks"):
+    # Install prek hooks
+    print("\nInstalling prek hooks...")
+    if not run_command("uv run --dev prek install", "prek hooks"):
         success = False
 
     # Create initialization marker file

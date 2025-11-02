@@ -1,5 +1,5 @@
-# pre-commit configuration. See https://pre-commit.com/ for more information.
-# Run 'uv run --dev pre-commit autoupdate' to update the hooks to the latest version.
+# pre-commit configuration (compatible with prek). See https://pre-commit.com/ for more information.
+# Run 'uv run --dev prek autoupdate' to update the hooks to the latest version.
 default_language_version:
   python: python3.13
 repos:
@@ -47,7 +47,7 @@ repos:
       - id: uv-lock
   - repo: local
     hooks:
-      # Running basedpyright outside of the pre-commit sandboxed environment so that
+      # Running basedpyright outside of the prek sandboxed environment so that
       # it has access to all types from the project.
       - id: basedpyright
         name: basedpyright

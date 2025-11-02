@@ -9,7 +9,7 @@ A Copier template for Python projects following modern best practices with Pytho
 - **Template Updates**: Supports updating existing projects with `copier update`
 - **Custom Development CLI**: Plugin-based `./dev` script for common tasks
 - **Comprehensive Testing**: pytest with custom fixtures and coverage support
-- **Code Quality**: Integrated ruff lint, ruff format, basedpyright
+- **Code Quality**: Integrated ruff lint, ruff format, basedpyright, prek hooks
 - **Environment-Based Configuration**: python-dotenv for environment variables
 - **Configurable Logging**: Supports both human-readable and JSON structured logging
 - **License Options**: Apache 2.0 or Proprietary
@@ -143,7 +143,7 @@ your-project/
 ├── .copier-answers.yml            # Copier template metadata
 ├── .env                           # Environment variable definitions
 ├── .gitignore                     # Git ignore rules
-├── .pre-commit-config.yaml        # Pre-commit hooks configuration
+├── .pre-commit-config.yaml        # Prek hooks configuration (pre-commit compatible)
 ├── .yamllint.yaml                 # YAML linting configuration
 ├── AGENTS.md                      # Claude Code instructions
 ├── CLAUDE.md -> AGENTS.md         # Symlink for Claude Code

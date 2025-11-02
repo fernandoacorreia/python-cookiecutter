@@ -7,13 +7,13 @@ from .utils import run_command
 
 def add_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     """Add lint command parser."""
-    lint_help = """Run code quality checks using pre-commit hooks on all files.
+    lint_help = """Run code quality checks using prek hooks on all files.
 
-This command runs pre-commit hooks configured in .pre-commit-config.yaml.
+This command runs prek hooks configured in .pre-commit-config.yaml.
 """
     lint_parser = subparsers.add_parser(
         "lint",
-        help="Run pre-commit hooks",
+        help="Run prek hooks",
         description=lint_help,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -21,5 +21,5 @@ This command runs pre-commit hooks configured in .pre-commit-config.yaml.
 
 
 def execute(args: argparse.Namespace) -> bool:
-    """Run pre-commit hooks."""
-    return run_command("uv run --dev pre-commit run --all-files", "pre-commit")
+    """Run prek hooks."""
+    return run_command("uv run --dev prek run --all-files", "prek")
